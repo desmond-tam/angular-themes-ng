@@ -14,25 +14,25 @@ app.use('/api', router);
 
 app.use((request, response, next) => {
     console.log('Server info: Request received');
-    
+
     let origin = request.headers.origin;
-    
+
     // only allow requests from origins that we trust
     if (originWhitelist.indexOf(origin) > -1) {
       response.setHeader('Access-Control-Allow-Origin', origin);
     }
-    
+
     // only allow get requests, separate methods by comma e.g. 'GET, POST'
     response.setHeader('Access-Control-Allow-Methods', 'GET');
     response.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     response.setHeader('Access-Control-Allow-Credentials', true);
-    
+
     // push through to the proper route
     next();
   });
 
 app.get('/api/accounts',(req,response,next) => {
-    
+
     response.json([{
         AccountNo: 522399332,
         AccountName:'Home Loan',
@@ -56,8 +56,16 @@ app.get('/api/accounts',(req,response,next) => {
       EarlyFee:423.00,
       CarryOver:1023.00
     }]);
-    
+
 })
+
+app.get('/api/sales',(request,response) => {
+  response.json({
+    sales:150046,
+    orders:4300,
+    visitors:2300468
+  });
+});
 
 app.get('/api/users',(request,response,next) => {
   const users = [
@@ -127,6 +135,44 @@ app.get('/api/users',(request,response,next) => {
 ];
   response.json(users);
   next();
+});
+
+app.get('/api/tickets',(request,response) => {
+  let date_ob = new Date();
+  response.json([
+    {
+      "assignee":"Peter Robert",
+      "subject":"User cannot login",
+      "status":"Done",
+      "lastUpdate":"2020-11-15T22:28:36.221Z",
+      "ticketId":"TW-2048",
+      "avatar":"a1.jpg"
+    },
+    {
+      "assignee":"Kenny Rogers",
+      "subject":"server down",
+      "status":"Progress",
+      "lastUpdate":"2020-11-01T12:28:36.221Z",
+      "ticketId":"TW-0122",
+      "avatar":"a2.jpg"
+    },
+    {
+      "assignee":"Rock Macqauire",
+      "subject":"Error on page load",
+      "status":"On Hold",
+      "lastUpdate":"2020-11-12T23:28:36.221Z",
+      "ticketId":"TW-0126",
+      "avatar":"a3.jpg"
+    },
+    {
+      "assignee":"Cameron Tender",
+      "subject":"Return wrong user name on load",
+      "status":"Rejected",
+      "lastUpdate":"2020-11-11T10:28:36.221Z",
+      "ticketId":"TW-0998",
+      "avatar":"a4.jpg"
+    }
+  ]);
 });
 
 // using router.get() to prefix our path

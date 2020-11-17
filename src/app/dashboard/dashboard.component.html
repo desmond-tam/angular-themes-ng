@@ -27,7 +27,7 @@
         <h4 class="font-weight-normal mb-3">Weekly Sales
           <i class="mdi mdi-chart-line mdi-24px float-right"></i>
         </h4>
-        <h2 class="mb-5">$ 15,0000</h2>
+        <h2 class="mb-5">{{ weekly.sales | number }}</h2>
         <h6 class="card-text">Increased by 60%</h6>
       </div>
     </div>
@@ -39,7 +39,7 @@
         <h4 class="font-weight-normal mb-3">Weekly Orders
           <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
         </h4>
-        <h2 class="mb-5">45,6334</h2>
+        <h2 class="mb-5">{{weekly.orders | number }}</h2>
         <h6 class="card-text">Decreased by 10%</h6>
       </div>
     </div>
@@ -51,7 +51,7 @@
         <h4 class="font-weight-normal mb-3">Visitors Online
           <i class="mdi mdi-diamond mdi-24px float-right"></i>
         </h4>
-        <h2 class="mb-5">95,5741</h2>
+        <h2 class="mb-5">{{weekly.visitors | number }}</h2>
         <h6 class="card-text">Increased by 5%</h6>
       </div>
     </div>
@@ -111,103 +111,7 @@
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">Recent Tickets</h4>
-        <div class="table-responsive">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>
-                  Assignee
-                </th>
-                <th>
-                  Subject
-                </th>
-                <th>
-                  Status
-                </th>
-                <th>
-                  Last Update
-                </th>
-                <th>
-                  Tracking ID
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <img src="assets/images/faces/a1.jpg" class="mr-2" alt="image">
-                  Peter Paul
-                </td>
-                <td>
-                  Fund is not recieved
-                </td>
-                <td>
-                  <label class="badge badge-gradient-success">DONE</label>
-                </td>
-                <td>
-                  Dec 5, 2017
-                </td>
-                <td>
-                  WD-12345
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <img src="assets/images/faces/a2.jpg" class="mr-2" alt="image">
-                  Tension Nickal
-                </td>
-                <td>
-                  High loading time
-                </td>
-                <td>
-                  <label class="badge badge-gradient-warning">PROGRESS</label>
-                </td>
-                <td>
-                  Dec 12, 2017
-                </td>
-                <td>
-                  WD-12346
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <img src="assets/images/faces/a3.jpg" class="mr-2" alt="image">
-                  Martine Wong
-                </td>
-                <td>
-                  Website down for one week
-                </td>
-                <td>
-                  <label class="badge badge-gradient-info">ON HOLD</label>
-                </td>
-                <td>
-                  Dec 16, 2017
-                </td>
-                <td>
-                  WD-12347
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <img src="assets/images/faces/a4.jpg" class="mr-2" alt="image">
-                  Paul Anker
-                </td>
-                <td>
-                  Loosing control on server
-                </td>
-                <td>
-                  <label class="badge badge-gradient-danger">REJECTED</label>
-                </td>
-                <td>
-                  Dec 3, 2017
-                </td>
-                <td>
-                  WD-12348
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <app-recent-ticket></app-recent-ticket>
       </div>
     </div>
   </div>
@@ -215,7 +119,7 @@
 <div class="row">
   <div class="col-md-5 grid-margin stretch-card">
     <div class="card">
-        <ngb-datepicker #dp [(ngModel)]="date" (navigate)="date = $event.next" class="w-100 border-0"></ngb-datepicker>
+        <app-recent-calendar></app-recent-calendar>
     </div>
   </div>
   <div class="col-md-7 grid-margin stretch-card">
