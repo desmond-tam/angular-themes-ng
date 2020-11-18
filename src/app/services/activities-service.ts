@@ -1,7 +1,7 @@
 import { Observable, Subscriber } from 'rxjs';
 import { HttpClient, HttpHandler, HttpXhrBackend, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IActivities, ITicket } from '../models/activities';
+import { IActivities, IProjectStatus, ITicket } from '../models/activities';
 import { api } from '../models/config';
 
 const thisurl = `${api}/sales`;
@@ -35,6 +35,16 @@ export class ActivitiesService {
           subscriber.next(result);
           subscriber.complete();
         });
+    })
+  }
+
+  public getProjectStatus() : Observable<IProjectStatus[]> {
+    return new Observable(subscriber => {
+      this.http.get<IProjectStatus[]>(`${api}/projects`,httpOptions)
+      .subscribe((result:IProjectStatus[]) => {
+        subscriber.next(result);
+        subscriber.complete();
+      });
     })
   }
 }

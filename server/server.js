@@ -13,7 +13,8 @@ app.get('/', (request, response) => response.send('Hello World'));
 app.use('/api', router);
 
 app.use((request, response, next) => {
-    console.log('Server info: Request received');
+    const url = request.protocol + '://' + request.get('host') + request.originalUrl;
+    console.log(`Server info: Request received - ${JSON.stringify(url)}`);
 
     let origin = request.headers.origin;
 
@@ -171,6 +172,42 @@ app.get('/api/tickets',(request,response) => {
       "lastUpdate":"2020-11-11T10:28:36.221Z",
       "ticketId":"TW-0998",
       "avatar":"a4.jpg"
+    }
+  ]);
+});
+
+app.get('/api/projects',(request,response) => {
+
+  response.json([
+    {
+      "id":"PRJ-0010",
+      "name":"Apply Auth0 Authentication",
+      "duedate":"2020-12-01T22:28:36.221Z",
+      "percentage":80
+    },
+    {
+      "id":"PRJ-9998",
+      "name":"R&D on Twilio",
+      "duedate":"2020-12-15T22:28:36.221Z",
+      "percentage":90
+    },
+    {
+      "id":"PRJ-8604",
+      "name":"Change Price Rate Model",
+      "duedate":"2020-12-24T22:28:36.221Z",
+      "percentage":20
+    },
+    {
+      "id":"PRJ-4200",
+      "name":"Send Predefined Whatspp",
+      "duedate":"2021-01-10T22:28:36.221Z",
+      "percentage":10
+    },
+    {
+      "id":"PRJ-5502",
+      "name":"Upgrade dot net core to 3.0",
+      "duedate":"2021-01-15T22:28:36.221Z",
+      "percentage":15
     }
   ]);
 });

@@ -21,6 +21,7 @@ import { ContentAnimateDirective } from './shared/directives/content-animate.dir
 import { TodoListComponent } from './apps/todo-list/todo-list.component';
 import { RecentTicketComponent } from './dashboard/recent-ticket/recent-ticket.component';
 import { RecentCalendarComponent } from './dashboard/recent-calendar/recent-calendar.component';
+import { ProjectStatusComponent } from './dashboard/project-status/project-status.component';
 // services
 import { UserService }              from './services/user-service';
 import { ActivitiesService } from './services/activities-service';
@@ -38,6 +39,7 @@ import { ActivitiesService } from './services/activities-service';
     SpinnerComponent,
     RecentTicketComponent,
     RecentCalendarComponent,
+    ProjectStatusComponent,
     ContentAnimateDirective,
 
   ],

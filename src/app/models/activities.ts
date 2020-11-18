@@ -13,6 +13,27 @@ export interface ITicket {
   statusColor:() => string;
 }
 
+export interface IProjectStatus {
+  id:string;
+  name:string;
+  duedate:Date;
+  percentage:number;
+  percentageColor:() => string;
+}
+
+export const ProjectStatus = (p:IProjectStatus) => {
+  let c = {
+    ...p,
+    percentageColor:function () {
+      if (this.percentage < 50)
+        return "danger";
+      else
+        return "success";
+    }
+  }
+  return c;
+}
+
 export const Ticket = (t:ITicket) => {
   let c = {
     ...t,
@@ -35,6 +56,8 @@ export const Ticket = (t:ITicket) => {
   }
   return c;
 }
+
+
 
 
 
