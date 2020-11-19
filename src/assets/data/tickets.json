@@ -1,0 +1,34 @@
+[
+  {
+    "assignee":"Peter Robert",
+    "subject":"User cannot login",
+    "status":"Done",
+    "lastUpdate":"2020-11-15T22:28:36.221Z",
+    "ticketId":"TW-2048",
+    "avatar":"a1.jpg"
+  },
+  {
+    "assignee":"Kenny Rogers",
+    "subject":"server down",
+    "status":"Progress",
+    "lastUpdate":"2020-11-01T12:28:36.221Z",
+    "ticketId":"TW-0122",
+    "avatar":"a2.jpg"
+  },
+  {
+    "assignee":"Rock Macqauire",
+    "subject":"Error on page load",
+    "status":"On Hold",
+    "lastUpdate":"2020-11-12T23:28:36.221Z",
+    "ticketId":"TW-0126",
+    "avatar":"a3.jpg"
+  },
+  {
+    "assignee":"Cameron Tender",
+    "subject":"Return wrong user name on load",
+    "status":"Rejected",
+    "lastUpdate":"2020-11-11T10:28:36.221Z",
+    "ticketId":"TW-0998",
+    "avatar":"a4.jpg"
+  }
+]
