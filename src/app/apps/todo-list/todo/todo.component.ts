@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { IToDo } from 'src/app/models/activities';
+import { ActivitiesService } from '../../../services/activities-service';
 
 @Component({
   selector: 'app-todo',
@@ -9,15 +11,10 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class TodoComponent implements OnInit {
 
   form;
-  todoArray = [
-    { task : 'Meeting with Urban Team' , completed : false },
-    { task : 'Duplicate a project for new customer' , completed : false },
-    { task : 'Project meeting with CEO' , completed : false },
-    { task : 'Follow up of team zilla' , completed : false },
-    { task : 'Level up for Antony' , completed : false }
-  ];
+  todoArray:IToDo[];
+  interval: any;
 
-  constructor(fb: FormBuilder) {
+  constructor(fb: FormBuilder,private service:ActivitiesService) {
 
     this.form = fb.group({
       todoitem : ['', Validators.required]
@@ -26,10 +23,23 @@ export class TodoComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.service.onReceivingToDoResult()
+      .subscribe(data => {
+        this.todoArray = data;
+      });
+    this.refreshData();
+    this.interval = setInterval(() => {
+      this.refreshData();
+    },60000);
+  }
+
+  refreshData() {
+    console.log('refresh data');
+    this.service.getToDos();
   }
 
   addTodo() {
-    let newTodoList = { task: '' , completed: false };
+    let newTodoList = { "task": '' , "completed": false } as IToDo;
     newTodoList.task= this.form.value.todoitem;
     this.todoArray.push(newTodoList);
     this.form.reset();

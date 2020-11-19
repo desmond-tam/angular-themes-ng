@@ -21,6 +21,11 @@ export interface IProjectStatus {
   percentageColor:() => string;
 }
 
+export interface IToDo {
+  task:string;
+  completed:boolean;
+}
+
 export const ProjectStatus = (p:IProjectStatus) => {
   let c = {
     ...p,
