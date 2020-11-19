@@ -1,7 +1,8 @@
-import { Observable, Subscriber } from 'rxjs';
+import { BehaviorSubject, Observable, Subscriber } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { HttpClient, HttpHandler, HttpXhrBackend, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IActivities, IProjectStatus, ITicket } from '../models/activities';
+import { IActivities, IProjectStatus, ITicket, IToDo } from '../models/activities';
 import { api } from '../models/config';
 
 const thisurl = `${api}/sales`;
@@ -13,10 +14,15 @@ const httpOptions = {
 
 @Injectable()
 export class ActivitiesService {
-  http:HttpClient;
-  constructor(private _http:HttpClient) {
-    this.http = _http;
+  constructor(private http:HttpClient) {
   }
+
+  private toDoSource = new BehaviorSubject(null);
+  public onReceivingToDoResult():Observable<IToDo[]> {
+    return this.toDoSource;
+  }
+
+
 
   public getActivities(): Observable<IActivities> {
     return new Observable(subscriber => {
@@ -47,5 +53,13 @@ export class ActivitiesService {
       });
     })
   }
+
+  public getToDos() {
+    this.http.get<IToDo[]>(`/assets/data/todos.json`,httpOptions)
+    .subscribe(result => {
+      this.toDoSource.next(result);
+    });
+  }
+
 }
 

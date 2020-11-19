@@ -176,6 +176,17 @@ app.get('/api/tickets',(request,response) => {
   ]);
 });
 
+app.get('/api/todos',(request,response) => {
+  let data = [
+    { "task" : "Complete unit test on add user template" , "completed" : false },
+    { "task" : "Investigation on wrong port", "completed" : false },
+    { "task" : "Leads are not coming in today" , "completed" : false },
+    { "task" : "Unable to send Whatsapp" , "completed" : false },
+    { "task" : "Send question to Auth0 to verify" , "completed" : false }
+  ];
+  response.json(data);
+})
+
 app.get('/api/projects',(request,response) => {
 
   response.json([
