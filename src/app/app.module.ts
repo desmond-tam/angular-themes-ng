@@ -22,6 +22,8 @@ import { TodoListComponent } from './apps/todo-list/todo-list.component';
 import { RecentTicketComponent } from './dashboard/recent-ticket/recent-ticket.component';
 import { RecentCalendarComponent } from './dashboard/recent-calendar/recent-calendar.component';
 import { ProjectStatusComponent } from './dashboard/project-status/project-status.component';
+import { NavbarMessageComponent } from  './shared/navbar-message/navbar-message.component';
+import { NavbarNotificationComponent } from './shared/navbar-notification/navbar-notification.component';
 // services
 import { UserService }              from './services/user-service';
 import { ActivitiesService } from './services/activities-service';
@@ -40,6 +42,8 @@ import { ActivitiesService } from './services/activities-service';
     RecentTicketComponent,
     RecentCalendarComponent,
     ProjectStatusComponent,
+    NavbarMessageComponent,
+    NavbarNotificationComponent,
     ContentAnimateDirective,
 
   ],

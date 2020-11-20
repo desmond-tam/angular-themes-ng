@@ -1,3 +1,5 @@
+import * as moment from 'moment';
+
 export interface IActivities {
   sales:number;
   orders:number;
@@ -21,9 +23,35 @@ export interface IProjectStatus {
   percentageColor:() => string;
 }
 
+export interface IMessage {
+  from:string;
+  title:string;
+  inTime:Date;
+  duration:() => string;
+}
+
 export interface IToDo {
   task:string;
   completed:boolean;
+}
+
+export interface INotification {
+  category:string;
+  title:string;
+  status:string;
+}
+
+export const Message = (m:IMessage) => {
+  let c = {
+    ...m,
+    duration:function () {
+      let m = moment(this.inTime);
+      let now = moment(new Date());
+      let duration = moment.duration(now.diff(m));
+      return `${duration.days()} minutes ago`;
+    }
+  }
+  return c;
 }
 
 export const ProjectStatus = (p:IProjectStatus) => {
