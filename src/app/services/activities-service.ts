@@ -2,7 +2,7 @@ import { BehaviorSubject, Observable, Subscriber } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient, HttpHandler, HttpXhrBackend, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IActivities, IProjectStatus, ITicket, IToDo } from '../models/activities';
+import { IActivities, IMessage, INotification, IProjectStatus, ITicket, IToDo } from '../models/activities';
 import { api } from '../models/config';
 
 const thisurl = `${api}/sales`;
@@ -61,5 +61,24 @@ export class ActivitiesService {
     });
   }
 
+  public getMessages() : Observable<IMessage[]> {
+    return new Observable(subscriber => {
+      this.http.get<IMessage[]>('/assets/data/messages.json',httpOptions)
+        .subscribe((result:IMessage[]) => {
+          subscriber.next(result);
+          subscriber.complete();
+        })
+    })
+  }
+
+  public getNotifications() : Observable<INotification[]> {
+    return new Observable(subscriber => {
+      this.http.get<INotification[]>('/assets/data/notifications.json',httpOptions)
+        .subscribe((result:INotification[]) => {
+          subscriber.next(result);
+          subscriber.complete();
+        })
+    })
+  }
 }
 
