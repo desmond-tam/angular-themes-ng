@@ -9,7 +9,7 @@ import { ActivitiesService } from 'src/app/services/activities-service';
 })
 
 export class NavbarMessageComponent implements OnInit {
-  messages:IMessage[];
+  messages:IMessage[]=[];
 
   constructor(private service:ActivitiesService) {
 
