@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CalendarModule } from 'primeng/calendar';
@@ -24,6 +25,7 @@ import { RecentCalendarComponent } from './dashboard/recent-calendar/recent-cale
 import { ProjectStatusComponent } from './dashboard/project-status/project-status.component';
 import { NavbarMessageComponent } from  './shared/navbar-message/navbar-message.component';
 import { NavbarNotificationComponent } from './shared/navbar-notification/navbar-notification.component';
+import { VisitSaleComponent } from './dashboard/visit-sale/visit-sale.component';
 // services
 import { UserService }              from './services/user-service';
 import { ActivitiesService } from './services/activities-service';
@@ -44,6 +46,7 @@ import { ActivitiesService } from './services/activities-service';
     ProjectStatusComponent,
     NavbarMessageComponent,
     NavbarNotificationComponent,
+    VisitSaleComponent,
     ContentAnimateDirective,
 
   ],
@@ -59,7 +62,10 @@ import { ActivitiesService } from './services/activities-service';
     NgxDatatableModule,
     CalendarModule
   ],
-  providers: [ThemeService,UserService,ActivitiesService],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy},
+              ThemeService,
+              UserService,
+              ActivitiesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
