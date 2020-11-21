@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  ViewContainerRef, ComponentFactoryResolver, ViewChild } from '@angular/core';
 import { IActivities } from '../models/activities';
 import { ActivitiesService } from  '../services/activities-service';
+import { VisitSaleComponent } from './visit-sale/visit-sale.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,6 +9,7 @@ import { ActivitiesService } from  '../services/activities-service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
+  @ViewChild('container',{ read: ViewContainerRef }) viewContainerRef: ViewContainerRef;
   weekly:IActivities = {
     sales:0,
     orders:0,
@@ -19,11 +21,19 @@ export class DashboardComponent implements OnInit {
     document.querySelector('body').classList.toggle('removeProbanner');
   }
 
-  constructor(private service:ActivitiesService) {
+  constructor(private service:ActivitiesService,
+    private componentFactoryResolver: ComponentFactoryResolver) {
 
    }
 
+   ngAfterViewInit(){
+    const factory = this.componentFactoryResolver.resolveComponentFactory(VisitSaleComponent);
+    const ref = this.viewContainerRef.createComponent(factory);
+    ref.changeDetectorRef.detectChanges();
+  }
+
   ngOnInit() {
+
     this.service.getActivities()
       .subscribe(r => {
          this.weekly = r;
