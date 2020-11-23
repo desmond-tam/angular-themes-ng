@@ -43,13 +43,13 @@ export class AppComponent implements OnInit{
     });
 
     // Spinner for lazyload modules
-    router.events.forEach((event) => {
-      if (event instanceof RouteConfigLoadStart) {
-          this.isLoading = true;
-      } else if (event instanceof RouteConfigLoadEnd) {
-          this.isLoading = false;
-      }
-    });
+    // router.events.forEach((event) => {
+    //   if (event instanceof RouteConfigLoadStart) {
+    //       this.isLoading = true;
+    //   } else if (event instanceof RouteConfigLoadEnd) {
+    //       this.isLoading = false;
+    //   }
+    // });
   }
 
 
