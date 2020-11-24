@@ -21,7 +21,7 @@ export class UserService {
 
   public getUsers(): Observable<IUser[]> {
     return new Observable(subscriber => {
-      this.http.get<IUser[]>('/assets/data/users.json',httpOptions)
+      this.http.get<IUser[]>('assets/data/users.json',httpOptions)
         .subscribe((result:IUser[]) => {
           subscriber.next(result);
           subscriber.complete();
