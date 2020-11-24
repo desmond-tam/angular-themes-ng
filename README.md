@@ -1,10 +1,10 @@
-# Purple Angular
+# Depowersoft Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.7.
 
 <h1>Demo</h1>
 
-[![N|Solid](preview.jpg)](https://bootstrapdash.com/demo/purple-angular-free/preview/dashboard/)
+[![N|Solid](preview.jpg)](https://desmond-tam.github.io/angular-themes-ng/)
 
 ## Development server
 
