@@ -26,7 +26,7 @@ export class ActivitiesService {
 
   public getActivities(): Observable<IActivities> {
     return new Observable(subscriber => {
-      this.http.get<IActivities>('/assets/data/sales.json',httpOptions)
+      this.http.get<IActivities>('assets/data/sales.json',httpOptions)
         .subscribe((result:IActivities) => {
           subscriber.next(result);
           subscriber.complete();
@@ -36,7 +36,7 @@ export class ActivitiesService {
 
   public getRecentTickets(): Observable<ITicket[]> {
     return new Observable(subscriber => {
-      this.http.get<ITicket[]>(`/assets/data/tickets.json`,httpOptions)
+      this.http.get<ITicket[]>(`assets/data/tickets.json`,httpOptions)
         .subscribe((result:ITicket[]) => {
           subscriber.next(result);
           subscriber.complete();
@@ -46,7 +46,7 @@ export class ActivitiesService {
 
   public getProjectStatus() : Observable<IProjectStatus[]> {
     return new Observable(subscriber => {
-      this.http.get<IProjectStatus[]>(`/assets/data/projects.json`,httpOptions)
+      this.http.get<IProjectStatus[]>(`assets/data/projects.json`,httpOptions)
       .subscribe((result:IProjectStatus[]) => {
         subscriber.next(result);
         subscriber.complete();
@@ -55,7 +55,7 @@ export class ActivitiesService {
   }
 
   public getToDos() {
-    this.http.get<IToDo[]>(`/assets/data/todos.json`,httpOptions)
+    this.http.get<IToDo[]>(`assets/data/todos.json`,httpOptions)
     .subscribe(result => {
       this.toDoSource.next(result);
     });
@@ -63,7 +63,7 @@ export class ActivitiesService {
 
   public getMessages() : Observable<IMessage[]> {
     return new Observable(subscriber => {
-      this.http.get<IMessage[]>('/assets/data/messages.json',httpOptions)
+      this.http.get<IMessage[]>('assets/data/messages.json',httpOptions)
         .subscribe((result:IMessage[]) => {
           subscriber.next(result);
           subscriber.complete();
@@ -73,7 +73,7 @@ export class ActivitiesService {
 
   public getNotifications() : Observable<INotification[]> {
     return new Observable(subscriber => {
-      this.http.get<INotification[]>('/assets/data/notifications.json',httpOptions)
+      this.http.get<INotification[]>('assets/data/notifications.json',httpOptions)
         .subscribe((result:INotification[]) => {
           subscriber.next(result);
           subscriber.complete();
