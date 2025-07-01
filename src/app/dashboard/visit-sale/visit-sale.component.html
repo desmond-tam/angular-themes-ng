@@ -1,0 +1,19 @@
+        <div>
+          <div class="d-flex flex-wrap justify-content-between">
+            <h4 class="card-title">Visit And Sales Statistics</h4>
+            <div id="visit-sale-chart-legend" class="rounded-legend legend-horizontal">
+              <ul>
+                <li>
+                  <span class="legend-dots"></span>CHN
+                </li>
+                <li>
+                  <span class="legend-dots"></span>USA
+                </li>
+                <li class="mr-0">
+                  <span class="legend-dots"></span>UK
+                </li>
+              </ul>
+            </div>
+          </div>
+          <canvas baseChart #visitSaleChart [chartType]="'bar'" [datasets]="visitSaleChartData" [labels]="visitSaleChartLabels" [options]="visitSaleChartOptions" [colors]="visitSaleChartColors"></canvas>
+        </div>
