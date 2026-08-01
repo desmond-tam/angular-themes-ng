@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 <h1>Demo</h1>
 
-[![N|Solid](preview.jpg)](https://daxemond.github.io/angular-themes-ng/)
+[![N|Solid](preview.jpg)]
 
 ## Development server
 
